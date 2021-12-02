@@ -5,13 +5,24 @@ import {
   PlusCircleIcon,
   HeartIcon,
   RssIcon,
+  ExternalLinkIcon,
 } from '@heroicons/react/outline';
+import { signOut, useSession } from 'next-auth/react';
 import SidebarButton from './SidebarButton';
 
 function Sidebar() {
+  const { data: session, status } = useSession();
+
+  console.log(`session`, session);
+
   return (
     <aside className='text-gray-500 p-5 text-sm border-r border-gray-900'>
       <div className='space-y-4'>
+        <SidebarButton
+          btnFunc={signOut}
+          text='Logout (Temp)'
+          Icon={ExternalLinkIcon}
+        />
         <SidebarButton text='Home' Icon={HomeIcon} />
         <SidebarButton text='Search' Icon={SearchIcon} />
         <SidebarButton text='Library' Icon={LibraryIcon} />
