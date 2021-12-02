@@ -13,10 +13,8 @@ import SidebarButton from './SidebarButton';
 function Sidebar() {
   const { data: session, status } = useSession();
 
-  console.log(`session`, session);
-
   return (
-    <aside className='text-gray-500 p-5 text-sm border-r border-gray-900'>
+    <aside className='text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide'>
       <div className='space-y-4'>
         <SidebarButton
           btnFunc={signOut}
@@ -35,6 +33,22 @@ function Sidebar() {
 
         <hr className='border-t-[0.1px] border-gray-900' />
 
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
+        <p className='cursor-pointer hover:text-white'>Playlist Name</p>
         <p className='cursor-pointer hover:text-white'>Playlist Name</p>
         <p className='cursor-pointer hover:text-white'>Playlist Name</p>
         <p className='cursor-pointer hover:text-white'>Playlist Name</p>
