@@ -20,7 +20,7 @@ export const refreshAccessToken = async (token) => {
 
     return {
       ...token,
-      error: 'Refresh Token Error',
+      error: 'refresh-token-error',
     };
   }
 };
