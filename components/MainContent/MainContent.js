@@ -27,9 +27,7 @@ function MainContent() {
     };
 
     if (session) getPlayList();
-  }, [spotifyApi, session]);
-
-  console.log(`playlist`, playlist);
+  }, [spotifyApi, playlistId, session]);
 
   return (
     <div className='flex-grow text-white'>
@@ -46,9 +44,19 @@ function MainContent() {
       </header>
 
       <section
-        className={`flex items-end space-x-7 bg-gradient-to-b ${randomColor} to-black h-80 text-white p-8`}
+        className={`flex items-end space-x-7 bg-gradient-to-b from-green-500 to-black h-80 text-white p-8`}
       >
-        {/* <img src="" alt="" /> */}
+        <img
+          className='h-44 w-44 shadow-2xl'
+          src={playlist?.images?.[0]?.url}
+          alt='Album Cover'
+        />
+        <div>
+          <p>PLAYLIST</p>
+          <h1 className='text-2xl md:text-3xl xl:text-5xl font-bold'>
+            {playlist?.name}
+          </h1>
+        </div>
       </section>
     </div>
   );
