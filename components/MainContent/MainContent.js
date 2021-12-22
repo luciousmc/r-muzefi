@@ -1,10 +1,35 @@
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { playlistIdState, playlistState } from '../../atoms/playlistAtom';
 import useRandomColor from '../../hooks/useRandomColor';
+import useSpotify from '../../hooks/useSpotify';
 
 function MainContent() {
   const { data: session } = useSession();
   const { randomColor } = useRandomColor();
+  const [playlist, setPlaylist] = useRecoilState(playlistState);
+  const playlistId = useRecoilValue(playlistIdState);
+  const spotifyApi = useSpotify();
+
+  useEffect(() => {
+    const getPlayList = async () => {
+      try {
+        spotifyApi.setAccessToken(session.user.accessToken);
+
+        const data = await spotifyApi.getPlaylist(playlistId);
+        console.log(`data`, data);
+        setPlaylist(data.body);
+      } catch (error) {
+        console.error('an error occured', error.message);
+      }
+    };
+
+    if (session) getPlayList();
+  }, [spotifyApi, session]);
+
+  console.log(`playlist`, playlist);
 
   return (
     <div className='flex-grow text-white'>
@@ -21,7 +46,7 @@ function MainContent() {
       </header>
 
       <section
-        className={`flex items-end space-x-7 bg-gradient-to-b to-black ${randomColor} h-80 text-white p-8`}
+        className={`flex items-end space-x-7 bg-gradient-to-b ${randomColor} to-black h-80 text-white p-8`}
       >
         {/* <img src="" alt="" /> */}
       </section>

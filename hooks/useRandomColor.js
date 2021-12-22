@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function useRandomColor() {
-  const [randomColor, setRandomColor] = useState(null);
+  const [randomColor, setRandomColor] = useState('from-pink-500');
 
   const colors = [
     'from-pink-500',
